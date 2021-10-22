@@ -9,33 +9,42 @@ import pandas as pd
 def scraping_0():
 
       #1ページurlの取得
-
-      df = pd.read_csv("outputdata.csv")
-
-      df = df.iloc[0,2]
-     
-       
+      #df = pd.read_csv("outputdata.csv")
+      #df = df.iloc[0,2]
       #url ="https://www.biccamera.com/bc/category/001/300/"
       #url = "https://www.biccamera.com/bc/category/001/300/002/?p=2#bcs_resultTxt"
-
       #df = url
-      #response = req.urlopen(df)
+
+      #1ページ目
+      #num = 1
+      response = req.urlopen(df)
       #category = BeautifulSoup(response,'html.parser')
        
         
-#while True :
-      #df = pd.read_csv("outputdata.csv")
-      #df = df.iloc[0,2]
+while True :
+      df = pd.read_csv("outputdata.csv")
+      df = df.iloc[0,2]
+      #num = 1
       
       response = req.urlopen(df)
-      category = BeautifulSoup(response,'html.parser')
+      if num >= 2 :
+      #num = 2
+
+        try :
+            response = req.urlopen(df+'?p='+ str(num)+ '#bcs_resultTx')
+            category = BeautifulSoup(response,'html.parser')
+        except:
+             
+            break
+      else:
 
       #商品名の取得
       #商品のURLの取得
-      block1 = category.find_all('a',class_= 'bcs_item')
+             category = BeautifulSoup(response,'html.parser')
+             block1 = category.find_all('a',class_= 'bcs_item')
       
-      title_list = []
-      url_list = []
+             title_list = []
+             url_list = []
 
       for i in block1:
             
@@ -60,7 +69,10 @@ def scraping_0():
       
 
       df = pd.DataFrame({"商品名":title_list,"URL":url_list,"値段":price_list})
-      df.to_csv("outputdata_00.csv")
+      df.to_csv("outputdata_02.csv")
+
+      num = num + 1
+
 
       #try:
       
@@ -69,9 +81,7 @@ def scraping_0():
       #   driver = Chrome(driver_path)
       #   driver.get(df)
       #   next_button= driver.find_elements_by_link_text('次へ')
-
       #   next_button.click() 
-
       #except:
       #      print("終了")
       #      break
