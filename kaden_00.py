@@ -12,6 +12,7 @@ def scraping_0():
       #url ="https://www.biccamera.com/bc/category/001/300/"
       #ur2 = "https://www.biccamera.com/bc/category/001/300/002/?p=2#bcs_resultTxt"
       url = "https://www.biccamera.com/bc/category/001/300/002/?p={}#bcs_resultTxt"
+      
 
 
       title_list = []
