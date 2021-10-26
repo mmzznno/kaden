@@ -53,7 +53,6 @@ def scraping_0():
     
             #d_list3.append(price_list)
       
-
       df = pd.DataFrame({"商品名":title_list,"URL":url_list,"値段":price_list})
       df.to_csv("outputdata_0205.csv")
       
