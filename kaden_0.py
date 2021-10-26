@@ -74,17 +74,5 @@ while True :
       num = num + 1
 
 
-      #try:
-      
-      #次ページへ
-      #driver_path = ChromeDriverManager().install()
-      #   driver = Chrome(driver_path)
-      #   driver.get(df)
-      #   next_button= driver.find_elements_by_link_text('次へ')
-      #   next_button.click() 
-      #except:
-      #      print("終了")
-      #      break
-
-        
+              
 scraping_0()
